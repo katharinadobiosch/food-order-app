@@ -1,0 +1,436 @@
+<!DOCTYPE html>
+<!-- saved from url=(0036)http://localhost:3000/food-order-app -->
+<html lang="en"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+        
+        <link rel="icon" href="http://localhost:3000/food-order-app/favicon.ico">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <!-- <meta name="theme-color" content="#000000"> -->
+        <meta name="description" content="Web site created using create-react-app">
+        <link rel="apple-touch-icon" href="http://localhost:3000/food-order-app/logo192.png">
+        <!--
+      manifest.json provides metadata used when your web app is installed on a
+      user's mobile device or desktop. See https://developers.google.com/web/fundamentals/web-app-manifest/
+    -->
+        <link rel="manifest" href="http://localhost:3000/food-order-app/manifest.json">
+        <!--
+      Notice the use of /food-order-app in the tags above.
+      It will be replaced with the URL of the `public` folder during the build.
+      Only files inside the `public` folder can be referenced from the HTML.
+
+      Unlike "/favicon.ico" or "favicon.ico", "/food-order-app/favicon.ico" will
+      work correctly both with client-side routing and a non-root public URL.
+      Learn how to configure a non-root public URL by running `npm run build`.
+    -->
+        <title>food order app</title>
+    <style>@import url(https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;700&display=swap);</style><style>* {
+    box-sizing: border-box;
+}
+
+html {
+    font-family: "Noto Sans JP", sans-serif;
+}
+
+body {
+    margin: 0;
+    background-color: white;
+}
+
+/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbIndlYnBhY2s6Ly9zcmMvaW5kZXguY3NzIl0sIm5hbWVzIjpbXSwibWFwcGluZ3MiOiJBQUVBO0lBQ0ksc0JBQXNCO0FBQzFCOztBQUVBO0lBQ0ksdUNBQXVDO0FBQzNDOztBQUVBO0lBQ0ksU0FBUztJQUNULHVCQUF1QjtBQUMzQiIsInNvdXJjZXNDb250ZW50IjpbIkBpbXBvcnQgdXJsKFwiaHR0cHM6Ly9mb250cy5nb29nbGVhcGlzLmNvbS9jc3MyP2ZhbWlseT1Ob3RvK1NhbnMrSlA6d2dodEA0MDA7NzAwJmRpc3BsYXk9c3dhcFwiKTtcblxuKiB7XG4gICAgYm94LXNpemluZzogYm9yZGVyLWJveDtcbn1cblxuaHRtbCB7XG4gICAgZm9udC1mYW1pbHk6IFwiTm90byBTYW5zIEpQXCIsIHNhbnMtc2VyaWY7XG59XG5cbmJvZHkge1xuICAgIG1hcmdpbjogMDtcbiAgICBiYWNrZ3JvdW5kLWNvbG9yOiB3aGl0ZTtcbn1cbiJdLCJzb3VyY2VSb290IjoiIn0= */</style><style>.Card_card__1m44e {
+  padding: 1rem;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.25);
+  border-radius: 14px;
+  background-color: white;
+}
+/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbIndlYnBhY2s6Ly9zcmMvY29tcG9uZW50cy9VSS9DYXJkLm1vZHVsZS5jc3MiXSwibmFtZXMiOltdLCJtYXBwaW5ncyI6IkFBQUE7RUFDRSxhQUFhO0VBQ2IseUNBQXlDO0VBQ3pDLG1CQUFtQjtFQUNuQix1QkFBdUI7QUFDekIiLCJzb3VyY2VzQ29udGVudCI6WyIuY2FyZCB7XG4gIHBhZGRpbmc6IDFyZW07XG4gIGJveC1zaGFkb3c6IDAgMnB4IDhweCByZ2JhKDAsIDAsIDAsIDAuMjUpO1xuICBib3JkZXItcmFkaXVzOiAxNHB4O1xuICBiYWNrZ3JvdW5kLWNvbG9yOiB3aGl0ZTtcbn0iXSwic291cmNlUm9vdCI6IiJ9 */</style><style>.MealItem_meal__2uJ70 {
+  display: flex;
+  justify-content: space-between;
+  margin: 1rem;
+  padding-bottom: 1rem;
+  border-bottom: 1px solid #ccc;
+}
+
+.MealItem_meal__2uJ70 h3 {
+  margin: 0 0 0.25rem 0;
+}
+
+.MealItem_description__2YINS {
+  font-style: italic;
+}
+
+.MealItem_price__3sNYl {
+  margin-top: 0.25rem;
+  font-weight: bold;
+  color: #ad5502;
+  font-size: 1.25rem;
+}
+/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbIndlYnBhY2s6Ly9zcmMvY29tcG9uZW50cy9NZWFscy9NZWFsSXRlbS9NZWFsSXRlbS5tb2R1bGUuY3NzIl0sIm5hbWVzIjpbXSwibWFwcGluZ3MiOiJBQUFBO0VBQ0UsYUFBYTtFQUNiLDhCQUE4QjtFQUM5QixZQUFZO0VBQ1osb0JBQW9CO0VBQ3BCLDZCQUE2QjtBQUMvQjs7QUFFQTtFQUNFLHFCQUFxQjtBQUN2Qjs7QUFFQTtFQUNFLGtCQUFrQjtBQUNwQjs7QUFFQTtFQUNFLG1CQUFtQjtFQUNuQixpQkFBaUI7RUFDakIsY0FBYztFQUNkLGtCQUFrQjtBQUNwQiIsInNvdXJjZXNDb250ZW50IjpbIi5tZWFsIHtcbiAgZGlzcGxheTogZmxleDtcbiAganVzdGlmeS1jb250ZW50OiBzcGFjZS1iZXR3ZWVuO1xuICBtYXJnaW46IDFyZW07XG4gIHBhZGRpbmctYm90dG9tOiAxcmVtO1xuICBib3JkZXItYm90dG9tOiAxcHggc29saWQgI2NjYztcbn1cblxuLm1lYWwgaDMge1xuICBtYXJnaW46IDAgMCAwLjI1cmVtIDA7XG59XG5cbi5kZXNjcmlwdGlvbiB7XG4gIGZvbnQtc3R5bGU6IGl0YWxpYztcbn1cblxuLnByaWNlIHtcbiAgbWFyZ2luLXRvcDogMC4yNXJlbTtcbiAgZm9udC13ZWlnaHQ6IGJvbGQ7XG4gIGNvbG9yOiAjYWQ1NTAyO1xuICBmb250LXNpemU6IDEuMjVyZW07XG59Il0sInNvdXJjZVJvb3QiOiIifQ== */</style><style>.Input_input__2swPp {
+  display: flex;
+  align-items: center;
+  margin-bottom: 0.5rem;
+}
+
+.Input_input__2swPp label {
+  font-weight: bold;
+  margin-right: 1rem;
+}
+
+.Input_input__2swPp input {
+  width: 3rem;
+  border-radius: 5px;
+  border: 1px solid #ccc;
+  font: inherit;
+  padding-left: 0.5rem;
+}
+/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbIndlYnBhY2s6Ly9zcmMvY29tcG9uZW50cy9VSS9JbnB1dC5tb2R1bGUuY3NzIl0sIm5hbWVzIjpbXSwibWFwcGluZ3MiOiJBQUFBO0VBQ0UsYUFBYTtFQUNiLG1CQUFtQjtFQUNuQixxQkFBcUI7QUFDdkI7O0FBRUE7RUFDRSxpQkFBaUI7RUFDakIsa0JBQWtCO0FBQ3BCOztBQUVBO0VBQ0UsV0FBVztFQUNYLGtCQUFrQjtFQUNsQixzQkFBc0I7RUFDdEIsYUFBYTtFQUNiLG9CQUFvQjtBQUN0QiIsInNvdXJjZXNDb250ZW50IjpbIi5pbnB1dCB7XG4gIGRpc3BsYXk6IGZsZXg7XG4gIGFsaWduLWl0ZW1zOiBjZW50ZXI7XG4gIG1hcmdpbi1ib3R0b206IDAuNXJlbTtcbn1cblxuLmlucHV0IGxhYmVsIHtcbiAgZm9udC13ZWlnaHQ6IGJvbGQ7XG4gIG1hcmdpbi1yaWdodDogMXJlbTtcbn1cblxuLmlucHV0IGlucHV0IHtcbiAgd2lkdGg6IDNyZW07XG4gIGJvcmRlci1yYWRpdXM6IDVweDtcbiAgYm9yZGVyOiAxcHggc29saWQgI2NjYztcbiAgZm9udDogaW5oZXJpdDtcbiAgcGFkZGluZy1sZWZ0OiAwLjVyZW07XG59Il0sInNvdXJjZVJvb3QiOiIifQ== */</style><style>.MealItemForm_form__32qVd {
+    text-align: right;
+}
+
+.MealItemForm_form__32qVd button {
+    font: inherit;
+    cursor: pointer;
+    background-color: rosybrown;
+    border: 1px solid rosybrown;
+    color: white;
+    padding: 0.25rem 2rem;
+    border-radius: 5px;
+    font-weight: bold;
+}
+
+.MealItemForm_form__32qVd button:hover,
+.MealItemForm_form__32qVd button:active {
+    background-color: #641e03;
+    border-color: #641e03;
+}
+
+/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbIndlYnBhY2s6Ly9zcmMvY29tcG9uZW50cy9NZWFscy9NZWFsSXRlbS9NZWFsSXRlbUZvcm0ubW9kdWxlLmNzcyJdLCJuYW1lcyI6W10sIm1hcHBpbmdzIjoiQUFBQTtJQUNJLGlCQUFpQjtBQUNyQjs7QUFFQTtJQUNJLGFBQWE7SUFDYixlQUFlO0lBQ2YsMkJBQTJCO0lBQzNCLDJCQUEyQjtJQUMzQixZQUFZO0lBQ1oscUJBQXFCO0lBQ3JCLGtCQUFrQjtJQUNsQixpQkFBaUI7QUFDckI7O0FBRUE7O0lBRUkseUJBQXlCO0lBQ3pCLHFCQUFxQjtBQUN6QiIsInNvdXJjZXNDb250ZW50IjpbIi5mb3JtIHtcbiAgICB0ZXh0LWFsaWduOiByaWdodDtcbn1cblxuLmZvcm0gYnV0dG9uIHtcbiAgICBmb250OiBpbmhlcml0O1xuICAgIGN1cnNvcjogcG9pbnRlcjtcbiAgICBiYWNrZ3JvdW5kLWNvbG9yOiByb3N5YnJvd247XG4gICAgYm9yZGVyOiAxcHggc29saWQgcm9zeWJyb3duO1xuICAgIGNvbG9yOiB3aGl0ZTtcbiAgICBwYWRkaW5nOiAwLjI1cmVtIDJyZW07XG4gICAgYm9yZGVyLXJhZGl1czogNXB4O1xuICAgIGZvbnQtd2VpZ2h0OiBib2xkO1xufVxuXG4uZm9ybSBidXR0b246aG92ZXIsXG4uZm9ybSBidXR0b246YWN0aXZlIHtcbiAgICBiYWNrZ3JvdW5kLWNvbG9yOiAjNjQxZTAzO1xuICAgIGJvcmRlci1jb2xvcjogIzY0MWUwMztcbn1cbiJdLCJzb3VyY2VSb290IjoiIn0= */</style><style>.AvailableMeals_meals__2ZLCP {
+  max-width: 60rem;
+  width: 90%;
+  margin: 2rem auto;
+  animation: AvailableMeals_meals-appear__ONwLi 1s ease-out forwards;
+}
+
+.AvailableMeals_meals__2ZLCP ul {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+@keyframes AvailableMeals_meals-appear__ONwLi {
+  from {
+    opacity: 0;
+    transform: translateY(3rem);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbIndlYnBhY2s6Ly9zcmMvY29tcG9uZW50cy9NZWFscy9BdmFpbGFibGVNZWFscy5tb2R1bGUuY3NzIl0sIm5hbWVzIjpbXSwibWFwcGluZ3MiOiJBQUFBO0VBQ0UsZ0JBQWdCO0VBQ2hCLFVBQVU7RUFDVixpQkFBaUI7RUFDakIsa0VBQTRDO0FBQzlDOztBQUVBO0VBQ0UsZ0JBQWdCO0VBQ2hCLFNBQVM7RUFDVCxVQUFVO0FBQ1o7O0FBRUE7RUFDRTtJQUNFLFVBQVU7SUFDViwyQkFBMkI7RUFDN0I7O0VBRUE7SUFDRSxVQUFVO0lBQ1Ysd0JBQXdCO0VBQzFCO0FBQ0YiLCJzb3VyY2VzQ29udGVudCI6WyIubWVhbHMge1xuICBtYXgtd2lkdGg6IDYwcmVtO1xuICB3aWR0aDogOTAlO1xuICBtYXJnaW46IDJyZW0gYXV0bztcbiAgYW5pbWF0aW9uOiBtZWFscy1hcHBlYXIgMXMgZWFzZS1vdXQgZm9yd2FyZHM7XG59XG5cbi5tZWFscyB1bCB7XG4gIGxpc3Qtc3R5bGU6IG5vbmU7XG4gIG1hcmdpbjogMDtcbiAgcGFkZGluZzogMDtcbn1cblxuQGtleWZyYW1lcyBtZWFscy1hcHBlYXIge1xuICBmcm9tIHtcbiAgICBvcGFjaXR5OiAwO1xuICAgIHRyYW5zZm9ybTogdHJhbnNsYXRlWSgzcmVtKTtcbiAgfVxuXG4gIHRvIHtcbiAgICBvcGFjaXR5OiAxO1xuICAgIHRyYW5zZm9ybTogdHJhbnNsYXRlWSgwKTtcbiAgfVxufSJdLCJzb3VyY2VSb290IjoiIn0= */</style><style>.Modal_backdrop__1mfF6 {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100vh;
+  z-index: 20;
+  background-color: rgba(0, 0, 0, 0.75);
+}
+
+.Modal_modal__4DXUe {
+  position: fixed;
+  top: 20vh;
+  left: 5%;
+  width: 90%;
+  background-color: white;
+  padding: 1rem;
+  border-radius: 14px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.25);
+  z-index: 30;
+  animation: Modal_slide-down__W3MdX 300ms ease-out forwards;
+}
+
+@media (min-width: 768px) {
+  .Modal_modal__4DXUe {
+    width: 40rem;
+    left: calc(50% - 20rem);
+  }
+}
+
+@keyframes Modal_slide-down__W3MdX {
+  from {
+    opacity: 0;
+    transform: translateY(-3rem);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbIndlYnBhY2s6Ly9zcmMvY29tcG9uZW50cy9VSS9Nb2RhbC5tb2R1bGUuY3NzIl0sIm5hbWVzIjpbXSwibWFwcGluZ3MiOiJBQUFBO0VBQ0UsZUFBZTtFQUNmLE1BQU07RUFDTixPQUFPO0VBQ1AsV0FBVztFQUNYLGFBQWE7RUFDYixXQUFXO0VBQ1gscUNBQXFDO0FBQ3ZDOztBQUVBO0VBQ0UsZUFBZTtFQUNmLFNBQVM7RUFDVCxRQUFRO0VBQ1IsVUFBVTtFQUNWLHVCQUF1QjtFQUN2QixhQUFhO0VBQ2IsbUJBQW1CO0VBQ25CLHlDQUF5QztFQUN6QyxXQUFXO0VBQ1gsMERBQTZDO0FBQy9DOztBQUVBO0VBQ0U7SUFDRSxZQUFZO0lBQ1osdUJBQXVCO0VBQ3pCO0FBQ0Y7O0FBRUE7RUFDRTtJQUNFLFVBQVU7SUFDViw0QkFBNEI7RUFDOUI7RUFDQTtJQUNFLFVBQVU7SUFDVix3QkFBd0I7RUFDMUI7QUFDRiIsInNvdXJjZXNDb250ZW50IjpbIi5iYWNrZHJvcCB7XG4gIHBvc2l0aW9uOiBmaXhlZDtcbiAgdG9wOiAwO1xuICBsZWZ0OiAwO1xuICB3aWR0aDogMTAwJTtcbiAgaGVpZ2h0OiAxMDB2aDtcbiAgei1pbmRleDogMjA7XG4gIGJhY2tncm91bmQtY29sb3I6IHJnYmEoMCwgMCwgMCwgMC43NSk7XG59XG5cbi5tb2RhbCB7XG4gIHBvc2l0aW9uOiBmaXhlZDtcbiAgdG9wOiAyMHZoO1xuICBsZWZ0OiA1JTtcbiAgd2lkdGg6IDkwJTtcbiAgYmFja2dyb3VuZC1jb2xvcjogd2hpdGU7XG4gIHBhZGRpbmc6IDFyZW07XG4gIGJvcmRlci1yYWRpdXM6IDE0cHg7XG4gIGJveC1zaGFkb3c6IDAgMnB4IDhweCByZ2JhKDAsIDAsIDAsIDAuMjUpO1xuICB6LWluZGV4OiAzMDtcbiAgYW5pbWF0aW9uOiBzbGlkZS1kb3duIDMwMG1zIGVhc2Utb3V0IGZvcndhcmRzO1xufVxuXG5AbWVkaWEgKG1pbi13aWR0aDogNzY4cHgpIHtcbiAgLm1vZGFsIHtcbiAgICB3aWR0aDogNDByZW07XG4gICAgbGVmdDogY2FsYyg1MCUgLSAyMHJlbSk7XG4gIH1cbn1cblxuQGtleWZyYW1lcyBzbGlkZS1kb3duIHtcbiAgZnJvbSB7XG4gICAgb3BhY2l0eTogMDtcbiAgICB0cmFuc2Zvcm06IHRyYW5zbGF0ZVkoLTNyZW0pO1xuICB9XG4gIHRvIHtcbiAgICBvcGFjaXR5OiAxO1xuICAgIHRyYW5zZm9ybTogdHJhbnNsYXRlWSgwKTtcbiAgfVxufSJdLCJzb3VyY2VSb290IjoiIn0= */</style><style>.CartItem_cart-item__1B1_q {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  border-bottom: 2px solid #8a2b06;
+  padding: 1rem 0;
+  margin: 1rem 0;
+}
+
+.CartItem_cart-item__1B1_q h2 {
+  margin: 0 0 0.5rem 0;
+  color: #363636;
+}
+
+.CartItem_summary__3FMDj {
+  width: 10rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.CartItem_price__2Nl0j {
+  font-weight: bold;
+  color: lightslategray;
+}
+
+.CartItem_amount__jUKEC {
+  font-weight: bold;
+  border: 1px solid #ccc;
+  padding: 0.25rem 0.75rem;
+  border-radius: 6px;
+  color: #363636;
+}
+
+.CartItem_actions__UwVPJ {
+  display: flex;
+  flex-direction: column;
+}
+
+@media (min-width: 768px) {
+  .CartItem_actions__UwVPJ {
+    flex-direction: row;
+  }
+}
+
+.CartItem_cart-item__1B1_q button {
+  font: inherit;
+  font-weight: bold;
+  font-size: 1.25rem;
+  color: lightslategray;
+  border: 1px solid lightslategray;
+  width: 3rem;
+  text-align: center;
+  border-radius: 6px;
+  background-color: transparent;
+  cursor: pointer;
+  margin-left: 1rem;
+  margin: 0.25rem;
+}
+
+.CartItem_cart-item__1B1_q button:hover,
+.CartItem_cart-item__1B1_q button:active {
+  background-color: lightslategray;
+  color: white;
+}
+/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbIndlYnBhY2s6Ly9zcmMvY29tcG9uZW50cy9DYXJ0L0NhcnRJdGVtLm1vZHVsZS5jc3MiXSwibmFtZXMiOltdLCJtYXBwaW5ncyI6IkFBQUE7RUFDRSxhQUFhO0VBQ2IsOEJBQThCO0VBQzlCLG1CQUFtQjtFQUNuQixnQ0FBZ0M7RUFDaEMsZUFBZTtFQUNmLGNBQWM7QUFDaEI7O0FBRUE7RUFDRSxvQkFBb0I7RUFDcEIsY0FBYztBQUNoQjs7QUFFQTtFQUNFLFlBQVk7RUFDWixhQUFhO0VBQ2IsOEJBQThCO0VBQzlCLG1CQUFtQjtBQUNyQjs7QUFFQTtFQUNFLGlCQUFpQjtFQUNqQixjQUFjO0FBQ2hCOztBQUVBO0VBQ0UsaUJBQWlCO0VBQ2pCLHNCQUFzQjtFQUN0Qix3QkFBd0I7RUFDeEIsa0JBQWtCO0VBQ2xCLGNBQWM7QUFDaEI7O0FBRUE7RUFDRSxhQUFhO0VBQ2Isc0JBQXNCO0FBQ3hCOztBQUVBO0VBQ0U7SUFDRSxtQkFBbUI7RUFDckI7QUFDRjs7QUFFQTtFQUNFLGFBQWE7RUFDYixpQkFBaUI7RUFDakIsa0JBQWtCO0VBQ2xCLGNBQWM7RUFDZCx5QkFBeUI7RUFDekIsV0FBVztFQUNYLGtCQUFrQjtFQUNsQixrQkFBa0I7RUFDbEIsNkJBQTZCO0VBQzdCLGVBQWU7RUFDZixpQkFBaUI7RUFDakIsZUFBZTtBQUNqQjs7QUFFQTs7RUFFRSx5QkFBeUI7RUFDekIsWUFBWTtBQUNkIiwic291cmNlc0NvbnRlbnQiOlsiLmNhcnQtaXRlbSB7XG4gIGRpc3BsYXk6IGZsZXg7XG4gIGp1c3RpZnktY29udGVudDogc3BhY2UtYmV0d2VlbjtcbiAgYWxpZ24taXRlbXM6IGNlbnRlcjtcbiAgYm9yZGVyLWJvdHRvbTogMnB4IHNvbGlkICM4YTJiMDY7XG4gIHBhZGRpbmc6IDFyZW0gMDtcbiAgbWFyZ2luOiAxcmVtIDA7XG59XG5cbi5jYXJ0LWl0ZW0gaDIge1xuICBtYXJnaW46IDAgMCAwLjVyZW0gMDtcbiAgY29sb3I6ICMzNjM2MzY7XG59XG5cbi5zdW1tYXJ5IHtcbiAgd2lkdGg6IDEwcmVtO1xuICBkaXNwbGF5OiBmbGV4O1xuICBqdXN0aWZ5LWNvbnRlbnQ6IHNwYWNlLWJldHdlZW47XG4gIGFsaWduLWl0ZW1zOiBjZW50ZXI7XG59XG5cbi5wcmljZSB7XG4gIGZvbnQtd2VpZ2h0OiBib2xkO1xuICBjb2xvcjogIzhhMmIwNjtcbn1cblxuLmFtb3VudCB7XG4gIGZvbnQtd2VpZ2h0OiBib2xkO1xuICBib3JkZXI6IDFweCBzb2xpZCAjY2NjO1xuICBwYWRkaW5nOiAwLjI1cmVtIDAuNzVyZW07XG4gIGJvcmRlci1yYWRpdXM6IDZweDtcbiAgY29sb3I6ICMzNjM2MzY7XG59XG5cbi5hY3Rpb25zIHtcbiAgZGlzcGxheTogZmxleDtcbiAgZmxleC1kaXJlY3Rpb246IGNvbHVtbjtcbn1cblxuQG1lZGlhIChtaW4td2lkdGg6IDc2OHB4KSB7XG4gIC5hY3Rpb25zIHtcbiAgICBmbGV4LWRpcmVjdGlvbjogcm93O1xuICB9XG59XG5cbi5jYXJ0LWl0ZW0gYnV0dG9uIHtcbiAgZm9udDogaW5oZXJpdDtcbiAgZm9udC13ZWlnaHQ6IGJvbGQ7XG4gIGZvbnQtc2l6ZTogMS4yNXJlbTtcbiAgY29sb3I6ICM4YTJiMDY7XG4gIGJvcmRlcjogMXB4IHNvbGlkICM4YTJiMDY7XG4gIHdpZHRoOiAzcmVtO1xuICB0ZXh0LWFsaWduOiBjZW50ZXI7XG4gIGJvcmRlci1yYWRpdXM6IDZweDtcbiAgYmFja2dyb3VuZC1jb2xvcjogdHJhbnNwYXJlbnQ7XG4gIGN1cnNvcjogcG9pbnRlcjtcbiAgbWFyZ2luLWxlZnQ6IDFyZW07XG4gIG1hcmdpbjogMC4yNXJlbTtcbn1cblxuLmNhcnQtaXRlbSBidXR0b246aG92ZXIsXG4uY2FydC1pdGVtIGJ1dHRvbjphY3RpdmUge1xuICBiYWNrZ3JvdW5kLWNvbG9yOiAjOGEyYjA2O1xuICBjb2xvcjogd2hpdGU7XG59Il0sInNvdXJjZVJvb3QiOiIifQ== */</style><style>.Cart_cart-items__2pjQw {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    max-height: 20rem;
+    overflow: scroll;
+}
+
+.Cart_total__3pLin {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-weight: bold;
+    font-size: 1.5rem;
+    margin: 1rem 0;
+}
+
+.Cart_actions__1GOmr {
+    text-align: right;
+}
+
+.Cart_actions__1GOmr button {
+    font: inherit;
+    cursor: pointer;
+    background-color: transparent;
+    border: 1px solid #8a2b06;
+    padding: 0.5rem 2rem;
+    border-radius: 25px;
+    margin-left: 1rem;
+}
+
+.Cart_actions__1GOmr button:hover,
+.Cart_actions__1GOmr button:active {
+    background-color: #5a1a01;
+    border-color: #5a1a01;
+    color: white;
+}
+
+.Cart_actions__1GOmr .Cart_button--alt__1Z2QQ {
+    color: lightslategray;
+}
+
+.Cart_actions__1GOmr .Cart_button__fw1-t {
+    background-color: lightslategray;
+    color: white;
+}
+
+/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbIndlYnBhY2s6Ly9zcmMvY29tcG9uZW50cy9DYXJ0L0NhcnQubW9kdWxlLmNzcyJdLCJuYW1lcyI6W10sIm1hcHBpbmdzIjoiQUFBQTtJQUNJLGdCQUFnQjtJQUNoQixTQUFTO0lBQ1QsVUFBVTtJQUNWLGlCQUFpQjtJQUNqQixnQkFBZ0I7QUFDcEI7O0FBRUE7SUFDSSxhQUFhO0lBQ2IsOEJBQThCO0lBQzlCLG1CQUFtQjtJQUNuQixpQkFBaUI7SUFDakIsaUJBQWlCO0lBQ2pCLGNBQWM7QUFDbEI7O0FBRUE7SUFDSSxpQkFBaUI7QUFDckI7O0FBRUE7SUFDSSxhQUFhO0lBQ2IsZUFBZTtJQUNmLDZCQUE2QjtJQUM3Qix5QkFBeUI7SUFDekIsb0JBQW9CO0lBQ3BCLG1CQUFtQjtJQUNuQixpQkFBaUI7QUFDckI7O0FBRUE7O0lBRUkseUJBQXlCO0lBQ3pCLHFCQUFxQjtJQUNyQixZQUFZO0FBQ2hCOztBQUVBO0lBQ0ksY0FBYztBQUNsQjs7QUFFQTtJQUNJLHlCQUF5QjtJQUN6QixZQUFZO0FBQ2hCIiwic291cmNlc0NvbnRlbnQiOlsiLmNhcnQtaXRlbXMge1xuICAgIGxpc3Qtc3R5bGU6IG5vbmU7XG4gICAgbWFyZ2luOiAwO1xuICAgIHBhZGRpbmc6IDA7XG4gICAgbWF4LWhlaWdodDogMjByZW07XG4gICAgb3ZlcmZsb3c6IHNjcm9sbDtcbn1cblxuLnRvdGFsIHtcbiAgICBkaXNwbGF5OiBmbGV4O1xuICAgIGp1c3RpZnktY29udGVudDogc3BhY2UtYmV0d2VlbjtcbiAgICBhbGlnbi1pdGVtczogY2VudGVyO1xuICAgIGZvbnQtd2VpZ2h0OiBib2xkO1xuICAgIGZvbnQtc2l6ZTogMS41cmVtO1xuICAgIG1hcmdpbjogMXJlbSAwO1xufVxuXG4uYWN0aW9ucyB7XG4gICAgdGV4dC1hbGlnbjogcmlnaHQ7XG59XG5cbi5hY3Rpb25zIGJ1dHRvbiB7XG4gICAgZm9udDogaW5oZXJpdDtcbiAgICBjdXJzb3I6IHBvaW50ZXI7XG4gICAgYmFja2dyb3VuZC1jb2xvcjogdHJhbnNwYXJlbnQ7XG4gICAgYm9yZGVyOiAxcHggc29saWQgIzhhMmIwNjtcbiAgICBwYWRkaW5nOiAwLjVyZW0gMnJlbTtcbiAgICBib3JkZXItcmFkaXVzOiAyNXB4O1xuICAgIG1hcmdpbi1sZWZ0OiAxcmVtO1xufVxuXG4uYWN0aW9ucyBidXR0b246aG92ZXIsXG4uYWN0aW9ucyBidXR0b246YWN0aXZlIHtcbiAgICBiYWNrZ3JvdW5kLWNvbG9yOiAjNWExYTAxO1xuICAgIGJvcmRlci1jb2xvcjogIzVhMWEwMTtcbiAgICBjb2xvcjogd2hpdGU7XG59XG5cbi5hY3Rpb25zIC5idXR0b24tLWFsdCB7XG4gICAgY29sb3I6ICM4YTJiMDY7XG59XG5cbi5hY3Rpb25zIC5idXR0b24ge1xuICAgIGJhY2tncm91bmQtY29sb3I6ICM4YTJiMDY7XG4gICAgY29sb3I6IHdoaXRlO1xufVxuIl0sInNvdXJjZVJvb3QiOiIifQ== */</style><style>.pb-sidebar-frame-container{position:fixed;top:0;background-color:transparent;width:380px;height:100%;right:-380px;transition:right 0.5s;transition-timing-function:ease;z-index:2147483647}.pb-sidebar-frame-container>iframe{width:100%;height:100%;border-width:0;border-style:initial !important;border-color:initial !important;border-image:initial !important}.pb-sidebar-frame-container.in{right:0}.pb-sidebar-frame-container.out{right:-380px}.pb-notification-frame-container{position:fixed;top:0;background-color:transparent;width:363px;height:78px;right:-370px;transition:right 0.5s;transition-timing-function:ease;z-index:2147483647}.pb-notification-frame-container>iframe{width:100%;height:100%;border-width:0;border-style:initial !important;border-color:initial !important;border-image:initial !important}.pb-notification-frame-container.in{right:7px}.pb-notification-frame-container.out{right:-370px}.pb-notification-frame-container.cop{right:-331px}
+
+/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbIkFwcENvbnRlbnQuc2NzcyJdLCJuYW1lcyI6W10sIm1hcHBpbmdzIjoiQUFBQSw0QkFBNEIsY0FBYyxDQUFDLEtBQUssQ0FBQyw0QkFBNEIsQ0FBQyxXQUFXLENBQUMsV0FBVyxDQUFDLFlBQVksQ0FBQyxxQkFBcUIsQ0FBQywrQkFBK0IsQ0FBQyxrQkFBa0IsQ0FBQyxtQ0FBbUMsVUFBVSxDQUFDLFdBQVcsQ0FBQyxjQUFjLENBQUMsK0JBQStCLENBQUMsK0JBQStCLENBQUMsK0JBQStCLENBQUMsK0JBQStCLE9BQU8sQ0FBQyxnQ0FBZ0MsWUFBWSxDQUFDLGlDQUFpQyxjQUFjLENBQUMsS0FBSyxDQUFDLDRCQUE0QixDQUFDLFdBQVcsQ0FBQyxXQUFXLENBQUMsWUFBWSxDQUFDLHFCQUFxQixDQUFDLCtCQUErQixDQUFDLGtCQUFrQixDQUFDLHdDQUF3QyxVQUFVLENBQUMsV0FBVyxDQUFDLGNBQWMsQ0FBQywrQkFBK0IsQ0FBQywrQkFBK0IsQ0FBQywrQkFBK0IsQ0FBQyxvQ0FBb0MsU0FBUyxDQUFDLHFDQUFxQyxZQUFZLENBQUMscUNBQXFDLFlBQVkiLCJmaWxlIjoiQXBwQ29udGVudC5zY3NzIiwic291cmNlc0NvbnRlbnQiOlsiLnBiLXNpZGViYXItZnJhbWUtY29udGFpbmVye3Bvc2l0aW9uOmZpeGVkO3RvcDowO2JhY2tncm91bmQtY29sb3I6dHJhbnNwYXJlbnQ7d2lkdGg6MzgwcHg7aGVpZ2h0OjEwMCU7cmlnaHQ6LTM4MHB4O3RyYW5zaXRpb246cmlnaHQgMC41czt0cmFuc2l0aW9uLXRpbWluZy1mdW5jdGlvbjplYXNlO3otaW5kZXg6MjE0NzQ4MzY0N30ucGItc2lkZWJhci1mcmFtZS1jb250YWluZXI+aWZyYW1le3dpZHRoOjEwMCU7aGVpZ2h0OjEwMCU7Ym9yZGVyLXdpZHRoOjA7Ym9yZGVyLXN0eWxlOmluaXRpYWwgIWltcG9ydGFudDtib3JkZXItY29sb3I6aW5pdGlhbCAhaW1wb3J0YW50O2JvcmRlci1pbWFnZTppbml0aWFsICFpbXBvcnRhbnR9LnBiLXNpZGViYXItZnJhbWUtY29udGFpbmVyLmlue3JpZ2h0OjB9LnBiLXNpZGViYXItZnJhbWUtY29udGFpbmVyLm91dHtyaWdodDotMzgwcHh9LnBiLW5vdGlmaWNhdGlvbi1mcmFtZS1jb250YWluZXJ7cG9zaXRpb246Zml4ZWQ7dG9wOjA7YmFja2dyb3VuZC1jb2xvcjp0cmFuc3BhcmVudDt3aWR0aDozNjNweDtoZWlnaHQ6NzhweDtyaWdodDotMzcwcHg7dHJhbnNpdGlvbjpyaWdodCAwLjVzO3RyYW5zaXRpb24tdGltaW5nLWZ1bmN0aW9uOmVhc2U7ei1pbmRleDoyMTQ3NDgzNjQ3fS5wYi1ub3RpZmljYXRpb24tZnJhbWUtY29udGFpbmVyPmlmcmFtZXt3aWR0aDoxMDAlO2hlaWdodDoxMDAlO2JvcmRlci13aWR0aDowO2JvcmRlci1zdHlsZTppbml0aWFsICFpbXBvcnRhbnQ7Ym9yZGVyLWNvbG9yOmluaXRpYWwgIWltcG9ydGFudDtib3JkZXItaW1hZ2U6aW5pdGlhbCAhaW1wb3J0YW50fS5wYi1ub3RpZmljYXRpb24tZnJhbWUtY29udGFpbmVyLmlue3JpZ2h0OjdweH0ucGItbm90aWZpY2F0aW9uLWZyYW1lLWNvbnRhaW5lci5vdXR7cmlnaHQ6LTM3MHB4fS5wYi1ub3RpZmljYXRpb24tZnJhbWUtY29udGFpbmVyLmNvcHtyaWdodDotMzMxcHh9XG4iXX0= */</style><script charset="utf-8" src="./food order app_files/main.23570794d01d140258c7.hot-update.js"></script><script charset="utf-8" src="./food order app_files/main.fc41ae2582b1ab47d09b.hot-update.js"></script><script charset="utf-8" src="./food order app_files/main.e298ebc7f85840087c8d.hot-update.js"></script><script charset="utf-8" src="./food order app_files/main.3d0c649228c8008864a3.hot-update.js"></script><script charset="utf-8" src="./food order app_files/main.b3b105fad7f3372917a3.hot-update.js"></script><script charset="utf-8" src="./food order app_files/main.b602609775d21d4be850.hot-update.js"></script><script charset="utf-8" src="./food order app_files/main.1603f23f0cc194fc3466.hot-update.js"></script><script charset="utf-8" src="./food order app_files/main.de1eead3628574857e1f.hot-update.js"></script><script charset="utf-8" src="./food order app_files/main.9984b9e6c66ec7024ede.hot-update.js"></script><script charset="utf-8" src="./food order app_files/main.b39702d401c6ae53758d.hot-update.js"></script><script charset="utf-8" src="./food order app_files/main.294a3cb24a35dc281cbc.hot-update.js"></script><script charset="utf-8" src="./food order app_files/main.f4eb5dfa1f55f894f91c.hot-update.js"></script><script charset="utf-8" src="./food order app_files/main.f766e2780add84618073.hot-update.js"></script><script charset="utf-8" src="./food order app_files/main.32016d6aae85c4c8011f.hot-update.js"></script><script charset="utf-8" src="./food order app_files/main.dd56a979ddd1204d384c.hot-update.js"></script><script charset="utf-8" src="./food order app_files/main.e6d0177793d483e282e8.hot-update.js"></script><script charset="utf-8" src="./food order app_files/main.a6c146f147215c307d67.hot-update.js"></script><script charset="utf-8" src="./food order app_files/main.042e12d92f419aa43903.hot-update.js"></script><script charset="utf-8" src="./food order app_files/main.50ed59659f15c2f943f8.hot-update.js"></script><script charset="utf-8" src="./food order app_files/main.464536e5a53751233ff3.hot-update.js"></script><script charset="utf-8" src="./food order app_files/main.11da00a6f406ce9d7ede.hot-update.js"></script><script charset="utf-8" src="./food order app_files/main.42706db37ff760e56130.hot-update.js"></script><script charset="utf-8" src="./food order app_files/main.9cbe1b7efbd8002af72f.hot-update.js"></script><script charset="utf-8" src="./food order app_files/main.b54d4f3aeaa61cbf7622.hot-update.js"></script><script charset="utf-8" src="./food order app_files/main.259767498f9c09857dcf.hot-update.js"></script><style>.HeaderCartButton_button__3CMOT {
+    cursor: pointer;
+    font: inherit;
+    border: none;
+    background-color: pink;
+    color: white;
+    padding: 0.75rem 3rem;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    border-radius: 5px;
+    font-weight: bold;
+}
+
+.HeaderCartButton_button__3CMOT:hover,
+.HeaderCartButton_button__3CMOT:active {
+    background-color: lightgray;
+}
+
+.HeaderCartButton_icon__9KWtg {
+    width: 1.35rem;
+    height: 1.35rem;
+    margin-right: 0.5rem;
+}
+
+.HeaderCartButton_badge__1Z3gL {
+    background-color: rosybrown;
+    padding: 0.25rem 1rem;
+    border-radius: 20px;
+    margin-left: 1rem;
+    font-weight: bold;
+}
+
+.HeaderCartButton_button__3CMOT:hover .HeaderCartButton_badge__1Z3gL,
+.HeaderCartButton_button__3CMOT:active .HeaderCartButton_badge__1Z3gL {
+    background-color: mistyrose;
+}
+
+.HeaderCartButton_bump__3atD4 {
+    animation: HeaderCartButton_bump__3atD4 300ms ease-out;
+}
+
+@keyframes HeaderCartButton_bump__3atD4 {
+    0% {
+        transform: scale(1);
+    }
+    10% {
+        transform: scale(0.9);
+    }
+    30% {
+        transform: scale(1.1);
+    }
+    50% {
+        transform: scale(1.15);
+    }
+    100% {
+        transform: scale(1);
+    }
+}
+
+/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbIndlYnBhY2s6Ly9zcmMvY29tcG9uZW50cy9MYXlvdXQvSGVhZGVyQ2FydEJ1dHRvbi5tb2R1bGUuY3NzIl0sIm5hbWVzIjpbXSwibWFwcGluZ3MiOiJBQUFBO0lBQ0ksZUFBZTtJQUNmLGFBQWE7SUFDYixZQUFZO0lBQ1osc0JBQXNCO0lBQ3RCLFlBQVk7SUFDWixxQkFBcUI7SUFDckIsYUFBYTtJQUNiLDZCQUE2QjtJQUM3QixtQkFBbUI7SUFDbkIsa0JBQWtCO0lBQ2xCLGlCQUFpQjtBQUNyQjs7QUFFQTs7SUFFSSwyQkFBMkI7QUFDL0I7O0FBRUE7SUFDSSxjQUFjO0lBQ2QsZUFBZTtJQUNmLG9CQUFvQjtBQUN4Qjs7QUFFQTtJQUNJLDJCQUEyQjtJQUMzQixxQkFBcUI7SUFDckIsbUJBQW1CO0lBQ25CLGlCQUFpQjtJQUNqQixpQkFBaUI7QUFDckI7O0FBRUE7O0lBRUksMkJBQTJCO0FBQy9COztBQUVBO0lBQ0ksc0RBQThCO0FBQ2xDOztBQUVBO0lBQ0k7UUFDSSxtQkFBbUI7SUFDdkI7SUFDQTtRQUNJLHFCQUFxQjtJQUN6QjtJQUNBO1FBQ0kscUJBQXFCO0lBQ3pCO0lBQ0E7UUFDSSxzQkFBc0I7SUFDMUI7SUFDQTtRQUNJLG1CQUFtQjtJQUN2QjtBQUNKIiwic291cmNlc0NvbnRlbnQiOlsiLmJ1dHRvbiB7XG4gICAgY3Vyc29yOiBwb2ludGVyO1xuICAgIGZvbnQ6IGluaGVyaXQ7XG4gICAgYm9yZGVyOiBub25lO1xuICAgIGJhY2tncm91bmQtY29sb3I6IHBpbms7XG4gICAgY29sb3I6IHdoaXRlO1xuICAgIHBhZGRpbmc6IDAuNzVyZW0gM3JlbTtcbiAgICBkaXNwbGF5OiBmbGV4O1xuICAgIGp1c3RpZnktY29udGVudDogc3BhY2UtYXJvdW5kO1xuICAgIGFsaWduLWl0ZW1zOiBjZW50ZXI7XG4gICAgYm9yZGVyLXJhZGl1czogNXB4O1xuICAgIGZvbnQtd2VpZ2h0OiBib2xkO1xufVxuXG4uYnV0dG9uOmhvdmVyLFxuLmJ1dHRvbjphY3RpdmUge1xuICAgIGJhY2tncm91bmQtY29sb3I6IGxpZ2h0Z3JheTtcbn1cblxuLmljb24ge1xuICAgIHdpZHRoOiAxLjM1cmVtO1xuICAgIGhlaWdodDogMS4zNXJlbTtcbiAgICBtYXJnaW4tcmlnaHQ6IDAuNXJlbTtcbn1cblxuLmJhZGdlIHtcbiAgICBiYWNrZ3JvdW5kLWNvbG9yOiByb3N5YnJvd247XG4gICAgcGFkZGluZzogMC4yNXJlbSAxcmVtO1xuICAgIGJvcmRlci1yYWRpdXM6IDIwcHg7XG4gICAgbWFyZ2luLWxlZnQ6IDFyZW07XG4gICAgZm9udC13ZWlnaHQ6IGJvbGQ7XG59XG5cbi5idXR0b246aG92ZXIgLmJhZGdlLFxuLmJ1dHRvbjphY3RpdmUgLmJhZGdlIHtcbiAgICBiYWNrZ3JvdW5kLWNvbG9yOiBtaXN0eXJvc2U7XG59XG5cbi5idW1wIHtcbiAgICBhbmltYXRpb246IGJ1bXAgMzAwbXMgZWFzZS1vdXQ7XG59XG5cbkBrZXlmcmFtZXMgYnVtcCB7XG4gICAgMCUge1xuICAgICAgICB0cmFuc2Zvcm06IHNjYWxlKDEpO1xuICAgIH1cbiAgICAxMCUge1xuICAgICAgICB0cmFuc2Zvcm06IHNjYWxlKDAuOSk7XG4gICAgfVxuICAgIDMwJSB7XG4gICAgICAgIHRyYW5zZm9ybTogc2NhbGUoMS4xKTtcbiAgICB9XG4gICAgNTAlIHtcbiAgICAgICAgdHJhbnNmb3JtOiBzY2FsZSgxLjE1KTtcbiAgICB9XG4gICAgMTAwJSB7XG4gICAgICAgIHRyYW5zZm9ybTogc2NhbGUoMSk7XG4gICAgfVxufVxuIl0sInNvdXJjZVJvb3QiOiIifQ== */</style><style>.Header_header__zSTUo {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 5rem;
+    /* background-color: rosybrown; */
+    color: white;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0 10%;
+    /* box-shadow: 0 2px 8px rgba(0, 0, 0, 0.25); */
+    z-index: 10;
+}
+
+.Header_main-image__2Q3So {
+    width: 100vw;
+    /* height: 25rem; */
+    /* height: 25rem; */
+
+    object-fit: cover;
+    z-index: 0;
+    overflow: hidden;
+}
+
+/* .main-image img {
+    width: 110%;
+    height: 100%;
+    transform: rotateZ(-5deg) translateY(-4rem) translateX(-1rem);
+} */
+
+/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbIndlYnBhY2s6Ly9zcmMvY29tcG9uZW50cy9MYXlvdXQvSGVhZGVyLm1vZHVsZS5jc3MiXSwibmFtZXMiOltdLCJtYXBwaW5ncyI6IkFBQUE7SUFDSSxlQUFlO0lBQ2YsTUFBTTtJQUNOLE9BQU87SUFDUCxXQUFXO0lBQ1gsWUFBWTtJQUNaLGlDQUFpQztJQUNqQyxZQUFZO0lBQ1osYUFBYTtJQUNiLDhCQUE4QjtJQUM5QixtQkFBbUI7SUFDbkIsY0FBYztJQUNkLCtDQUErQztJQUMvQyxXQUFXO0FBQ2Y7O0FBRUE7SUFDSSxZQUFZO0lBQ1osbUJBQW1CO0lBQ25CLG1CQUFtQjs7SUFFbkIsaUJBQWlCO0lBQ2pCLFVBQVU7SUFDVixnQkFBZ0I7QUFDcEI7O0FBRUE7Ozs7R0FJRyIsInNvdXJjZXNDb250ZW50IjpbIi5oZWFkZXIge1xuICAgIHBvc2l0aW9uOiBmaXhlZDtcbiAgICB0b3A6IDA7XG4gICAgbGVmdDogMDtcbiAgICB3aWR0aDogMTAwJTtcbiAgICBoZWlnaHQ6IDVyZW07XG4gICAgLyogYmFja2dyb3VuZC1jb2xvcjogcm9zeWJyb3duOyAqL1xuICAgIGNvbG9yOiB3aGl0ZTtcbiAgICBkaXNwbGF5OiBmbGV4O1xuICAgIGp1c3RpZnktY29udGVudDogc3BhY2UtYmV0d2VlbjtcbiAgICBhbGlnbi1pdGVtczogY2VudGVyO1xuICAgIHBhZGRpbmc6IDAgMTAlO1xuICAgIC8qIGJveC1zaGFkb3c6IDAgMnB4IDhweCByZ2JhKDAsIDAsIDAsIDAuMjUpOyAqL1xuICAgIHotaW5kZXg6IDEwO1xufVxuXG4ubWFpbi1pbWFnZSB7XG4gICAgd2lkdGg6IDEwMHZ3O1xuICAgIC8qIGhlaWdodDogMjVyZW07ICovXG4gICAgLyogaGVpZ2h0OiAyNXJlbTsgKi9cblxuICAgIG9iamVjdC1maXQ6IGNvdmVyO1xuICAgIHotaW5kZXg6IDA7XG4gICAgb3ZlcmZsb3c6IGhpZGRlbjtcbn1cblxuLyogLm1haW4taW1hZ2UgaW1nIHtcbiAgICB3aWR0aDogMTEwJTtcbiAgICBoZWlnaHQ6IDEwMCU7XG4gICAgdHJhbnNmb3JtOiByb3RhdGVaKC01ZGVnKSB0cmFuc2xhdGVZKC00cmVtKSB0cmFuc2xhdGVYKC0xcmVtKTtcbn0gKi9cbiJdLCJzb3VyY2VSb290IjoiIn0= */</style><script charset="utf-8" src="./food order app_files/main.ca3f2ad61ca207625891.hot-update.js"></script><script charset="utf-8" src="./food order app_files/main.4a8ab91a61c53ab748c7.hot-update.js"></script><script charset="utf-8" src="./food order app_files/main.289a7d748f81ba16fbca.hot-update.js"></script><script charset="utf-8" src="./food order app_files/main.91523eedf34423aad173.hot-update.js"></script><script charset="utf-8" src="./food order app_files/main.e89bdb13bf8e33b6ec35.hot-update.js"></script><script charset="utf-8" src="./food order app_files/main.348e399967a2336a5670.hot-update.js"></script><script charset="utf-8" src="./food order app_files/main.a1e68060157040c6fcea.hot-update.js"></script><script charset="utf-8" src="./food order app_files/main.5c59b06e65accf6be994.hot-update.js"></script><script charset="utf-8" src="./food order app_files/main.df7ed7f5c7d5e7b791f3.hot-update.js"></script><script charset="utf-8" src="./food order app_files/main.c7bf07a280ae3ed71d8e.hot-update.js"></script><script charset="utf-8" src="./food order app_files/main.b8b693d454ae3869a99a.hot-update.js"></script><script charset="utf-8" src="./food order app_files/main.9c9ec7a0c28a083b4246.hot-update.js"></script><script charset="utf-8" src="./food order app_files/main.d3a643fa13bbd72e1760.hot-update.js"></script><script charset="utf-8" src="./food order app_files/main.4c7c474b90ede0be11d4.hot-update.js"></script><script charset="utf-8" src="./food order app_files/main.2ef92a5be3d0e612229c.hot-update.js"></script><script charset="utf-8" src="./food order app_files/main.85104edf71a0bdb8a462.hot-update.js"></script><script charset="utf-8" src="./food order app_files/main.c25a9b03e4a7c91e307e.hot-update.js"></script><script charset="utf-8" src="./food order app_files/main.72f7cc769b6479179a10.hot-update.js"></script><script charset="utf-8" src="./food order app_files/main.3bd48e79bc66b877d1e4.hot-update.js"></script><script charset="utf-8" src="./food order app_files/main.bd6dfde40c9f3545f4f7.hot-update.js"></script><script charset="utf-8" src="./food order app_files/main.3cf821f323dd2c9895e7.hot-update.js"></script><script charset="utf-8" src="./food order app_files/main.76bd8d68f6d4a24c5bbc.hot-update.js"></script><script charset="utf-8" src="./food order app_files/main.715bd6e1520207546fe7.hot-update.js"></script><script charset="utf-8" src="./food order app_files/main.8df3fbb7a359745e485f.hot-update.js"></script><style>/* .summary {
+    text-align: center;
+    max-width: 45rem;
+    width: 90%;
+    margin: auto;
+    margin-top: -10rem;
+    position: relative;
+    background-color: #383838;
+    background-color: rosybrown;
+
+    color: white;
+    border-radius: 14px;
+    padding: 1rem;
+    box-shadow: 0 1px 18px 10px rgba(0, 0, 0, 0.25);
+}
+
+.summary h2 {
+    font-size: 2rem;
+    margin-top: 0;
+} */
+
+.MealsSummary_summary__22zUX {
+    display: ;
+    text-align: center;
+    max-width: 45rem;
+    width: 90%;
+    margin: auto;
+    /* margin-top: -10rem; */
+    margin-top: -10rem;
+
+    /* position: relative; */
+    /* background-color: #383838; */
+    background-color: rosybrown;
+
+    color: white;
+    border-radius: 14px;
+    padding: 1rem;
+    box-shadow: 0 1px 18px 10px rgba(0, 0, 0, 0.25);
+}
+
+.MealsSummary_summary__22zUX h2 {
+    font-size: 2rem;
+    margin-top: 0;
+}
+
+/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbIndlYnBhY2s6Ly9zcmMvY29tcG9uZW50cy9NZWFscy9NZWFsc1N1bW1hcnkubW9kdWxlLmNzcyJdLCJuYW1lcyI6W10sIm1hcHBpbmdzIjoiQUFBQTs7Ozs7Ozs7Ozs7Ozs7Ozs7OztHQW1CRzs7QUFFSDtJQUNJLFNBQVM7SUFDVCxrQkFBa0I7SUFDbEIsZ0JBQWdCO0lBQ2hCLFVBQVU7SUFDVixZQUFZO0lBQ1osd0JBQXdCO0lBQ3hCLGtCQUFrQjs7SUFFbEIsd0JBQXdCO0lBQ3hCLCtCQUErQjtJQUMvQiwyQkFBMkI7O0lBRTNCLFlBQVk7SUFDWixtQkFBbUI7SUFDbkIsYUFBYTtJQUNiLCtDQUErQztBQUNuRDs7QUFFQTtJQUNJLGVBQWU7SUFDZixhQUFhO0FBQ2pCIiwic291cmNlc0NvbnRlbnQiOlsiLyogLnN1bW1hcnkge1xuICAgIHRleHQtYWxpZ246IGNlbnRlcjtcbiAgICBtYXgtd2lkdGg6IDQ1cmVtO1xuICAgIHdpZHRoOiA5MCU7XG4gICAgbWFyZ2luOiBhdXRvO1xuICAgIG1hcmdpbi10b3A6IC0xMHJlbTtcbiAgICBwb3NpdGlvbjogcmVsYXRpdmU7XG4gICAgYmFja2dyb3VuZC1jb2xvcjogIzM4MzgzODtcbiAgICBiYWNrZ3JvdW5kLWNvbG9yOiByb3N5YnJvd247XG5cbiAgICBjb2xvcjogd2hpdGU7XG4gICAgYm9yZGVyLXJhZGl1czogMTRweDtcbiAgICBwYWRkaW5nOiAxcmVtO1xuICAgIGJveC1zaGFkb3c6IDAgMXB4IDE4cHggMTBweCByZ2JhKDAsIDAsIDAsIDAuMjUpO1xufVxuXG4uc3VtbWFyeSBoMiB7XG4gICAgZm9udC1zaXplOiAycmVtO1xuICAgIG1hcmdpbi10b3A6IDA7XG59ICovXG5cbi5zdW1tYXJ5IHtcbiAgICBkaXNwbGF5OiA7XG4gICAgdGV4dC1hbGlnbjogY2VudGVyO1xuICAgIG1heC13aWR0aDogNDVyZW07XG4gICAgd2lkdGg6IDkwJTtcbiAgICBtYXJnaW46IGF1dG87XG4gICAgLyogbWFyZ2luLXRvcDogLTEwcmVtOyAqL1xuICAgIG1hcmdpbi10b3A6IC0xMHJlbTtcblxuICAgIC8qIHBvc2l0aW9uOiByZWxhdGl2ZTsgKi9cbiAgICAvKiBiYWNrZ3JvdW5kLWNvbG9yOiAjMzgzODM4OyAqL1xuICAgIGJhY2tncm91bmQtY29sb3I6IHJvc3licm93bjtcblxuICAgIGNvbG9yOiB3aGl0ZTtcbiAgICBib3JkZXItcmFkaXVzOiAxNHB4O1xuICAgIHBhZGRpbmc6IDFyZW07XG4gICAgYm94LXNoYWRvdzogMCAxcHggMThweCAxMHB4IHJnYmEoMCwgMCwgMCwgMC4yNSk7XG59XG5cbi5zdW1tYXJ5IGgyIHtcbiAgICBmb250LXNpemU6IDJyZW07XG4gICAgbWFyZ2luLXRvcDogMDtcbn1cbiJdLCJzb3VyY2VSb290IjoiIn0= */</style><script charset="utf-8" src="./food order app_files/main.477a150f932f70587bd0.hot-update.js"></script><script charset="utf-8" src="./food order app_files/main.1434cd1abbcfb762bff1.hot-update.js"></script></head>
+    <body>
+        <noscript>You need to enable JavaScript to run this app.</noscript>
+        <div id="overlays"></div>
+        <div id="root"><header class="Header_header__zSTUo"><h1>The Green Seeds</h1><button class="HeaderCartButton_button__3CMOT "><span class="HeaderCartButton_icon__9KWtg"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor"><path d="M3 1a1 1 0 000 2h1.22l.305 1.222a.997.997 0 00.01.042l1.358 5.43-.893.892C3.74 11.846 4.632 14 6.414 14H15a1 1 0 000-2H6.414l1-1H14a1 1 0 00.894-.553l3-6A1 1 0 0017 3H6.28l-.31-1.243A1 1 0 005 1H3zM16 16.5a1.5 1.5 0 11-3 0 1.5 1.5 0 013 0zM6.5 18a1.5 1.5 0 100-3 1.5 1.5 0 000 3z"></path></svg></span><span class="HeaderCartButton_badge__1Z3gL">42</span></button></header><div><img class="Header_main-image__2Q3So" alt="Healthy vegan food" src="./food order app_files/01.e0d858ea.jpg"></div><main><section class="MealsSummary_summary__22zUX"><h2>Delicious Food, Delivered To You</h2><p>Choose your favorite meal from our broad selection of available meals and enjoy a delicious lunch or dinner at home.</p><p>All our meals are cooked with high-quality vegan ingredients, just-in-time and of course by experienced chefs!</p></section><section class="AvailableMeals_meals__2ZLCP"><div class="Card_card__1m44e"><ul><li class="MealItem_meal__2uJ70"><div><h3>VEagle  Burger</h3><div class="MealItem_description__2YINS">Hafer-GrünkernPatty im weichen Weizenbrötchen getoppt mit EggplantBacon und einer Handvoll knackig-cremigem Coleslaw</div><div class="MealItem_price__3sNYl">13.30€</div></div><div><form class="MealItemForm_form__32qVd"><div class="Input_input__2swPp"><label for="amount">Menge</label><input id="amount" type="number" min="1" max="5" step="1" value="1"></div><button>+</button></form></div></li><li class="MealItem_meal__2uJ70"><div><h3>Jackfruit Paprika Gulasch</h3><div class="MealItem_description__2YINS">Ein kräftiges Eintopf-Gericht aus Jackfruit, Sauerkraut, Zwiebeln und Paprika, serviert mit einem Klecks Cashew-Schmand, Shcnittlauch und rustikalem Kartoffelstampf</div><div class="MealItem_price__3sNYl">14.60€</div></div><div><form class="MealItemForm_form__32qVd"><div class="Input_input__2swPp"><label for="amount">Menge</label><input id="amount" type="number" min="1" max="5" step="1" value="1"></div><button>+</button></form></div></li><li class="MealItem_meal__2uJ70"><div><h3>Eine Schüssel Herbst</h3><div class="MealItem_description__2YINS">Cremiges Wirsing-Austernpilzragout mit marinierten Kürbisspaöten, Röstkartoffeln, knackigen Haselnüssen und herbstlichem Preiselbeer-Salat</div><div class="MealItem_price__3sNYl">14.30€</div></div><div><form class="MealItemForm_form__32qVd"><div class="Input_input__2swPp"><label for="amount">Menge</label><input id="amount" type="number" min="1" max="5" step="1" value="1"></div><button>+</button></form></div></li><li class="MealItem_meal__2uJ70"><div><h3>Five Bean Chili</h3><div class="MealItem_description__2YINS">Reichlich Hülsenfrüchte und eine ausgefeilte Würzmischung mchen es einzigartig, serviert mit Weizentortilla, spicy Guacamole, Cashew-Schmand und rauchiger Chipotle Sauce</div><div class="MealItem_price__3sNYl">13.80€</div></div><div><form class="MealItemForm_form__32qVd"><div class="Input_input__2swPp"><label for="amount">Menge</label><input id="amount" type="number" min="1" max="5" step="1" value="1"></div><button>+</button></form></div></li></ul></div></section></main></div>
+        <!--
+      This HTML file is a template.
+      If you open it directly in the browser, you will see an empty page.
+
+      You can add webfonts, meta tags, or analytics to this file.
+      The build step will place the bundled scripts into the <body> tag.
+
+      To begin the development, run `npm start` or `yarn start`.
+      To create a production bundle, use `npm run build` or `yarn build`.
+    --><script src="./food order app_files/bundle.js"></script><script src="./food order app_files/0.chunk.js"></script><script src="./food order app_files/main.chunk.js"></script>
+
+<pb-pia-extension-container><pb-notification-frame-container class="pb-notification-frame-container out"></pb-notification-frame-container><pb-sidebar-frame-container class="pb-sidebar-frame-container out"></pb-sidebar-frame-container></pb-pia-extension-container><span style="border-radius: 10px !important; text-indent: 12px !important; width: auto !important; height: 20px !important; padding: 0px 8px !important; text-align: center !important; vertical-align: middle !important; font: bold 11px / 20px &quot;Helvetica Neue&quot;, Helvetica, sans-serif !important; color: rgb(255, 255, 255) !important; background: url(&quot;data:image/svg+xml;base64,PHN2ZyBpZD0ic291cmNlIiB3aWR0aD0iMTIiIGhlaWdodD0iMTIiIHZpZXdCb3g9IjAgMCAxMiAxMiIgZmlsbD0ibm9uZSIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj4KPGNpcmNsZSBjeD0iNiIgY3k9IjYiIHI9IjYiIGZpbGw9IiNFNjAwMjMiPjwvY2lyY2xlPgo8cGF0aCBmaWxsLXJ1bGU9ImV2ZW5vZGQiIGNsaXAtcnVsZT0iZXZlbm9kZCIgZD0iTTAgNkMwIDguNTYxNSAxLjYwNTUgMTAuNzQ4NSAzLjg2NSAxMS42MDlDMy44MSAxMS4xNDA1IDMuNzUxNSAxMC4zNjggMy44Nzc1IDkuODI2QzMuOTg2IDkuMzYgNC41NzggNi44NTcgNC41NzggNi44NTdDNC41NzggNi44NTcgNC4zOTk1IDYuNDk5NSA0LjM5OTUgNS45N0M0LjM5OTUgNS4xNCA0Ljg4MDUgNC41MiA1LjQ4IDQuNTJDNS45OSA0LjUyIDYuMjM2IDQuOTAyNSA2LjIzNiA1LjM2MUM2LjIzNiA1Ljg3MzUgNS45MDk1IDYuNjM5NSA1Ljc0MSA3LjM1QzUuNjAwNSA3Ljk0NDUgNi4wMzk1IDguNDI5NSA2LjYyNTUgOC40Mjk1QzcuNjg3IDguNDI5NSA4LjUwMzUgNy4zMSA4LjUwMzUgNS42OTRDOC41MDM1IDQuMjYzNSA3LjQ3NTUgMy4yNjQgNi4wMDggMy4yNjRDNC4zMDkgMy4yNjQgMy4zMTE1IDQuNTM4NSAzLjMxMTUgNS44NTZDMy4zMTE1IDYuMzY5NSAzLjUwOSA2LjkxOTUgMy43NTYgNy4yMTlDMy44MDQ1IDcuMjc4NSAzLjgxMiA3LjMzIDMuNzk3NSA3LjM5MDVDMy43NTIgNy41Nzk1IDMuNjUxIDcuOTg1IDMuNjMxNSA4LjA2OEMzLjYwNSA4LjE3NyAzLjU0NSA4LjIwMDUgMy40MzE1IDguMTQ3NUMyLjY4NTUgNy44MDA1IDIuMjE5NSA2LjcxIDIuMjE5NSA1LjgzNEMyLjIxOTUgMy45NDk1IDMuNTg4IDIuMjE5NSA2LjE2NTUgMi4yMTk1QzguMjM3NSAyLjIxOTUgOS44NDggMy42OTYgOS44NDggNS42NjlDOS44NDggNy43Mjc1IDguNTUwNSA5LjM4NDUgNi43NDg1IDkuMzg0NUM2LjE0MyA5LjM4NDUgNS41NzQ1IDkuMDY5NSA1LjM3OTUgOC42OThDNS4zNzk1IDguNjk4IDUuMDggOS44MzkgNS4wMDc1IDEwLjExOEM0Ljg2NjUgMTAuNjYgNC40NzU1IDExLjM0NiA0LjIzMyAxMS43MzU1QzQuNzkyIDExLjkwNzUgNS4zODUgMTIgNiAxMkM5LjMxMzUgMTIgMTIgOS4zMTM1IDEyIDZDMTIgMi42ODY1IDkuMzEzNSAwIDYgMEMyLjY4NjUgMCAwIDIuNjg2NSAwIDZaIiBmaWxsPSJ3aGl0ZSI+PC9wYXRoPgo8L3N2Zz4=&quot;) 4px 50% / 12px 12px no-repeat rgb(230, 0, 35) !important; position: absolute !important; opacity: 1 !important; z-index: 8675309 !important; display: none; cursor: pointer !important; border: none !important; -webkit-font-smoothing: antialiased !important; top: 10px; left: 10px;">Merken</span><span style="border-radius: 12px; width: 24px !important; height: 24px !important; background: url(&quot;data:image/svg+xml;base64,PHN2ZyBpZD0ic291cmNlIiB3aWR0aD0iMjIiIGhlaWdodD0iMjIiIHZpZXdCb3g9IjAgMCAyMiAyMiIgZmlsbD0ibm9uZSIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj4KPGNpcmNsZSBjeD0iMTEiIGN5PSIxMSIgcj0iMTEiIGZpbGw9ImJsYWNrIiBmaWxsLW9wYWNpdHk9IjAuOCI+PC9jaXJjbGU+CjxwYXRoIGZpbGwtcnVsZT0iZXZlbm9kZCIgY2xpcC1ydWxlPSJldmVub2RkIiBkPSJNMTUuMDgzNCA0LjU4MzMzSDEzLjMzMzRWNS43NDk5OUgxNS4wODM0QzE1LjcyNjggNS43NDk5OSAxNi4yNSA2LjI3MzI0IDE2LjI1IDYuOTE2NjZWOC42NjY2NkgxNy40MTY3VjYuOTE2NjZDMTcuNDE2NyA1LjYyOTgzIDE2LjM3MDIgNC41ODMzMyAxNS4wODM0IDQuNTgzMzNaTTE2LjI1IDE1LjA4MzNDMTYuMjUgMTUuNzI2NyAxNS43MjY4IDE2LjI1IDE1LjA4MzQgMTYuMjVIMTMuMzMzNFYxNy40MTY3SDE1LjA4MzRDMTYuMzcwMiAxNy40MTY3IDE3LjQxNjcgMTYuMzcwMiAxNy40MTY3IDE1LjA4MzNWMTMuMzMzM0gxNi4yNVYxNS4wODMzWk01Ljc1MDA0IDE1LjA4MzNWMTMuMzMzM0g0LjU4MzM3VjE1LjA4MzNDNC41ODMzNyAxNi4zNzAyIDUuNjI5ODcgMTcuNDE2NyA2LjkxNjcxIDE3LjQxNjdIOC42NjY3MVYxNi4yNUg2LjkxNjcxQzYuMjczMjkgMTYuMjUgNS43NTAwNCAxNS43MjY3IDUuNzUwMDQgMTUuMDgzM1pNNS43NTAwNCA2LjkxNjY2QzUuNzUwMDQgNi4yNzMyNCA2LjI3MzI5IDUuNzQ5OTkgNi45MTY3MSA1Ljc0OTk5SDguNjY2NzFWNC41ODMzM0g2LjkxNjcxQzUuNjI5ODcgNC41ODMzMyA0LjU4MzM3IDUuNjI5ODMgNC41ODMzNyA2LjkxNjY2VjguNjY2NjZINS43NTAwNFY2LjkxNjY2Wk05LjI1MDA0IDEwLjcwODNDOS4yNTAwNCA5LjkwNDQ5IDkuOTA0NTQgOS4yNDk5OSAxMC43MDg0IDkuMjQ5OTlDMTEuNTEyMiA5LjI0OTk5IDEyLjE2NjcgOS45MDQ0OSAxMi4xNjY3IDEwLjcwODNDMTIuMTY2NyAxMS41MTIyIDExLjUxMjIgMTIuMTY2NyAxMC43MDg0IDEyLjE2NjdDOS45MDQ1NCAxMi4xNjY3IDkuMjUwMDQgMTEuNTEyMiA5LjI1MDA0IDEwLjcwODNaTTEzLjYyNSAxNC41QzEzLjg0OSAxNC41IDE0LjA3MyAxNC40MTQ4IDE0LjI0NCAxNC4yNDM5QzE0LjU4NTIgMTMuOTAyMSAxNC41ODUyIDEzLjM0NzkgMTQuMjQ0IDEzLjAwNjFMMTMuMDcwMyAxMS44MzNDMTMuMjM0MiAxMS40OTA2IDEzLjMzMzQgMTEuMTEyNiAxMy4zMzM0IDEwLjcwODNDMTMuMzMzNCA5LjI2MTA4IDEyLjE1NTYgOC4wODMzMyAxMC43MDg0IDguMDgzMzNDOS4yNjExMiA4LjA4MzMzIDguMDgzMzcgOS4yNjEwOCA4LjA4MzM3IDEwLjcwODNDOC4wODMzNyAxMi4xNTU2IDkuMjYxMTIgMTMuMzMzMyAxMC43MDg0IDEzLjMzMzNDMTEuMTEyNiAxMy4zMzMzIDExLjQ5MDYgMTMuMjM0MiAxMS44MzMgMTMuMDcwMkwxMy4wMDYxIDE0LjI0MzlDMTMuMTc3IDE0LjQxNDggMTMuNDAxIDE0LjUgMTMuNjI1IDE0LjVaIiBmaWxsPSJ3aGl0ZSI+PC9wYXRoPgo8L3N2Zz4=&quot;) 50% 50% / 24px 24px no-repeat rgba(0, 0, 0, 0.4) !important; position: absolute !important; opacity: 1 !important; z-index: 8675309 !important; display: none; cursor: pointer !important; border: none !important; top: 10px; left: 1341px;"></span><iframe style="position: fixed; top: 0px; left: 0px; width: 100%; height: 100%; border: none; z-index: 2147483647;" src="./food order app_files/saved_resource.html"></iframe></body></html>
