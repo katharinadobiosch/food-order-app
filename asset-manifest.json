@@ -1,21 +1,21 @@
 {
   "files": {
     "main.css": "/food-order-app/static/css/main.f928680b.chunk.css",
-    "main.js": "/food-order-app/static/js/main.bfe21396.chunk.js",
-    "main.js.map": "/food-order-app/static/js/main.bfe21396.chunk.js.map",
+    "main.js": "/food-order-app/static/js/main.d6016e4a.chunk.js",
+    "main.js.map": "/food-order-app/static/js/main.d6016e4a.chunk.js.map",
     "runtime-main.js": "/food-order-app/static/js/runtime-main.895f0d08.js",
     "runtime-main.js.map": "/food-order-app/static/js/runtime-main.895f0d08.js.map",
-    "static/js/2.fbf2c2eb.chunk.js": "/food-order-app/static/js/2.fbf2c2eb.chunk.js",
-    "static/js/2.fbf2c2eb.chunk.js.map": "/food-order-app/static/js/2.fbf2c2eb.chunk.js.map",
+    "static/js/2.1286b6d0.chunk.js": "/food-order-app/static/js/2.1286b6d0.chunk.js",
+    "static/js/2.1286b6d0.chunk.js.map": "/food-order-app/static/js/2.1286b6d0.chunk.js.map",
     "index.html": "/food-order-app/index.html",
     "static/css/main.f928680b.chunk.css.map": "/food-order-app/static/css/main.f928680b.chunk.css.map",
-    "static/js/2.fbf2c2eb.chunk.js.LICENSE.txt": "/food-order-app/static/js/2.fbf2c2eb.chunk.js.LICENSE.txt",
+    "static/js/2.1286b6d0.chunk.js.LICENSE.txt": "/food-order-app/static/js/2.1286b6d0.chunk.js.LICENSE.txt",
     "static/media/vegan-plant-based-news-healthy-food.981700c7.jpeg": "/food-order-app/static/media/vegan-plant-based-news-healthy-food.981700c7.jpeg"
   },
   "entrypoints": [
     "static/js/runtime-main.895f0d08.js",
-    "static/js/2.fbf2c2eb.chunk.js",
+    "static/js/2.1286b6d0.chunk.js",
     "static/css/main.f928680b.chunk.css",
-    "static/js/main.bfe21396.chunk.js"
+    "static/js/main.d6016e4a.chunk.js"
   ]
 }
